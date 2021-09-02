@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table (name = "Usuario")
+@Table (name = "tb_Usuario")
 public class Usuario {
 //------------COLUNAS DA TABELA "USUARIO"
 	@Id
@@ -27,6 +27,11 @@ public class Usuario {
 	@NotBlank
 	@Size (max= 100)
 	private String senha;
+	
+	
+	
+	
+	
 //-----------GETTERS AND SETTERS
 	public long getId() {
 		return id;
