@@ -22,15 +22,11 @@ public class Usuario {
 	
 	@NotBlank
 	@Size (max= 100)
-	private String email;
+	private String usuario;
 	
 	@NotBlank
 	@Size (max= 100)
 	private String senha;
-	
-	
-	
-	
 	
 //-----------GETTERS AND SETTERS
 	public long getId() {
@@ -49,12 +45,12 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
