@@ -41,9 +41,6 @@ public class Produto {
 	@JsonIgnoreProperties("produto")
 	private CategoriaModel categoria;
 
-	@ManyToOne
-	@JsonIgnoreProperties("usuario")
-	private Usuario usuario;
 	
 //-----------GETTERS AND SETTERS
 	
@@ -95,11 +92,4 @@ public class Produto {
 		this.data = data;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
 }

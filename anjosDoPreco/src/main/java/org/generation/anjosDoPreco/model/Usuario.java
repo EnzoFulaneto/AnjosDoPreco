@@ -21,7 +21,7 @@ public class Usuario {
 	
 	//Atributos da nossa Tabela Usuario 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	//Nome do Usuario
@@ -40,26 +40,13 @@ public class Usuario {
 	private String senha;
 	
 	//Recebe o Link do Documento
-	@NotNull(message = "Documento muito pesado!!")
-	@Size (min = 5, max= 9999)
+	@NotNull(message = "Insira o Link do documento de comprovante de renda")
 	private String documento; 
 	
 	//Tipos de Úsuario - Admnistrador - Cliente
-	@NotNull(message = "")
+	@NotNull(message = "É necessario escolher um tipo de usuario")
 	private String tipo;
 	
-	//Ligando Produto ao Usuario
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("usuario")
-	private List<Produto> produto;
-	
-//---------CONSTRUTOR - DADOS REQUISITADOS -------
-	public Usuario(Long id, String nome, String usuario, String senha) {
-		this.id = id;
-		this.nome = nome;
-		this.usuario = usuario;
-		this.senha = senha;
-	}
 	
 //-----------GETTERS AND SETTERS
 	
@@ -111,11 +98,4 @@ public class Usuario {
 		this.tipo = tipo;
 	}
 
-	public List<Produto> getProduto() {
-		return produto;
-	}
-
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
-	}
 }
