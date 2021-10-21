@@ -29,7 +29,7 @@ public class CategoriaController {
 	
 	//Método Get - Anotação para Requisição 
 	@GetMapping
-	public ResponseEntity<List<CategoriaModel>> GetAll(){
+	public ResponseEntity<List<CategoriaModel>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
@@ -42,9 +42,9 @@ public class CategoriaController {
 	}
 	
 	//Método Get - Anotação para buscar descricao atráves do valor
-	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<List<CategoriaModel>> GetByDescricao(@PathVariable String descricao){
-		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
+	@GetMapping("/categoria/{categoria}")
+	public ResponseEntity<List<CategoriaModel>> GetByCategoria(@PathVariable String categoria){
+		return ResponseEntity.ok(repository.findAllByCategoriaContainingIgnoreCase(categoria));
 	}
 	
 	
