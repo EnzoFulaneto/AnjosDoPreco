@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -16,17 +16,17 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank
+	@NotNull
 	@Size(max = 200)
 	private String produto;
 
-	@NotBlank
+	@NotNull
 	private String foto;
 
-	@NotBlank
+	@NotNull
 	private double preco;
 
-	@NotBlank
+	@NotNull
 	private String categoria;
 
 	// -----------GETTERS AND SETTERS

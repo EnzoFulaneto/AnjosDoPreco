@@ -37,11 +37,6 @@ public class ProdutoController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/marca/{marca}")
-	public ResponseEntity<List<Produto>> GetByMarca(@PathVariable String marca){
-		return ResponseEntity.ok(repository.findAllByMarcaContainingIgnoreCase(marca));
-	}
-	
 	@PostMapping
 	public ResponseEntity<Produto> post (@RequestBody Produto produto){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));

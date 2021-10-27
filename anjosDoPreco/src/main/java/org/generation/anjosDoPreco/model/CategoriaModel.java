@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,7 +21,7 @@ public class CategoriaModel {
 		@GeneratedValue (strategy = GenerationType.IDENTITY) // SERVE COMO AUTO INCREMENT DO MYSQL
 		private long id;
 		
-		@NotBlank	// SERVE COMO UM NOT NULL (DO MYSQL) MAIS COMPLETO
+		@NotNull	// SERVE COMO UM NOT NULL (DO MYSQL) MAIS COMPLETO
 		private String categoria;
 		
 		@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
