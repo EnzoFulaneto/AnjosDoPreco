@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -23,13 +24,13 @@ public class Produto {
 	@NotBlank
 	private String foto;
 
-	@NotBlank
+	@NotNull
 	private double preco;
 
 	@NotBlank
 	private String categoria;
-
-	// -----------GETTERS AND SETTERS
+	
+//-----------GETTERS AND SETTERS
 	public long getId() {
 		return id;
 	}

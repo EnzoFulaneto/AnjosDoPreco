@@ -33,6 +33,19 @@ public class UsuarioService {
 	return Optional.of(repository.save(usuario));
 	}
 	
+	public Optional<Usuario> AtualizarUsuario (Usuario usuario) {
+		if (repository.findById(usuario.getId()).isPresent()) {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			String senhaEncoder = encoder.encode(usuario.getSenha());
+			usuario.setSenha(senhaEncoder);
+
+			return Optional.of(repository.save(usuario));
+
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado!", null);
+		}  
+	}
+	
 	public List<Usuario> listarUsuarios() {
 
         return repository.findAll();

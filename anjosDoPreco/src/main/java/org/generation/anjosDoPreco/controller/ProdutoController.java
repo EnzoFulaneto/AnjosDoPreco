@@ -26,32 +26,38 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository repository;
 	
+	//FIND ALL
 	@GetMapping
 	public ResponseEntity<List<Produto>> GetAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
+	//FIND BY CATEGORIA
+	@GetMapping ("/{categoria}")
+	public ResponseEntity <List<Produto>> GetByCategoria (@PathVariable String categoria){
+		return ResponseEntity.ok (repository.findAllByCategoriaContainingIgnoreCase(categoria));
+	}
+	
+	//FIND BY ID
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> GetById(@PathVariable long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/marca/{marca}")
-	public ResponseEntity<List<Produto>> GetByMarca(@PathVariable String marca){
-		return ResponseEntity.ok(repository.findAllByMarcaContainingIgnoreCase(marca));
-	}
-	
+	//POST
 	@PostMapping
 	public ResponseEntity<Produto> post (@RequestBody Produto produto){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));
 	}
 	
+	//PUT
 	@PutMapping
 	public ResponseEntity<Produto> put (@RequestBody Produto produto){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(produto));
 	}
 	
+	//DELETE
 	@DeleteMapping ("/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);

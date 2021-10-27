@@ -13,6 +13,7 @@ public class UserLogin {
 	private String tipo;
 
 	private String token;
+	
 
 //-----------GETTERS AND SETTERS
 	public long getId() {

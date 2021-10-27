@@ -1,36 +1,49 @@
 package org.generation.anjosDoPreco.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
 @Entity
-@Table (name = "tb_Usuario")
+@Table (name = "tb_usuario")
 public class Usuario {
 //------------COLUNAS DA TABELA "USUARIO"
+	
+	//Atributos da nossa Tabela Usuario 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-	@NotBlank
-	@Size (max= 100)
+	
+	//Nome do Usuario
+	@NotNull(message = "O Nome é Obrigatório")
+	@Size (min = 2, max= 100)
 	private String nome;
 	
-	@NotBlank
-	@Size (max= 100)
+	//Usuario de acesso a conta 
+	@NotNull(message = "O Usuario é Obrigatório")
+	@Size (min = 5, max= 100)
 	private String usuario;
 	
-	@NotBlank
-	@Size (max= 100)
+	//Senha da Conta do Úsuario
+	@NotNull(message = "A Senha deve ter no mínimo 8 caracteres")
+	@Size (min = 5, max= 100)
 	private String senha;
-	
-	private String tipo;
 
-	//-----------GETTERS AND SETTERS
+	//Recebe o Link do Documento
+	private String documento; 
+	
+	//Tipos de Usuario - Admnistrador - Cliente
+	@NotNull(message = "É necessario escolher um tipo de usuario")
+	private String tipo;
+	
+	
+//-----------GETTERS AND SETTERS
 	public long getId() {
 		return id;
 	}
@@ -62,7 +75,15 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
 	public String getTipo() {
 		return tipo;
 	}
